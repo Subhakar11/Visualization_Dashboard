@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filters div {
+  margin: 10px;
+}
+
+.filters label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.filters input {
+  padding: 5px;
+  width: 150px;
+}
+
+.filters button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background-color: #0056b3;
+}
