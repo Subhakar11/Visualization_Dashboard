@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Data Dashboard Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a data dashboard application built with Node.js, Express, and MongoDB. 
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+Follow these instructions to get a copy of the project up and running on your local machine.
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Make sure you have the following software installed on your machine:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Node.js](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com/try/download/community)
 
-### `npm test`
+### Installation
+1. **Clone the repository**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone <repository-url>
+   cd datadashboard
 
-### `npm run build`
+### Install dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install
+Start MongoDB
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Ensure that MongoDB is running. You can start MongoDB with the following command:
 
-### `npm run eject`
+mongod
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Populate the database
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Use the provided script to populate the MongoDB database with initial data. This script requires a jsondata.json file in the data folder.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+node populate.js
+Run the application
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Start the server with:
 
-## Learn More
+node server.js
+The server should now be running at http://localhost:5000.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### File Structure
+server.js: The main entry point of the application.
+populate.js: A script to populate the MongoDB database with initial data.
+models/: This folder contains the Mongoose schemas and models.
+routes/: This folder contains the Express routes.
+data/: This folder contains the jsondata.json file used by the populate.js script.
+Troubleshooting
+### If you encounter the following error:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017
+Make sure that MongoDB is running and accessible at localhost:27017. You can also try connecting using the IPv4 address:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+mongoose.connect('mongodb://127.0.0.1:27017/yourDatabaseName', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+Additional Notes
+You can ignore the MONGOOSE deprecation warning by adding the following line to server.js:
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+mongoose.set('strictQuery', false);
